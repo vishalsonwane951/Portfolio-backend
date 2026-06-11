@@ -38,8 +38,13 @@ app.use(cors({
     "http://localhost:5173",
     "https://portfolio-roan-three-88.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// ✅ Handle preflight requests explicitly
+app.options("*", cors());
 
 app.use("/api", apiLimiter);
 // contactLimiter is scoped to POST /api/contact inside routes/contact.js
