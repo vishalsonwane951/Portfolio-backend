@@ -33,6 +33,14 @@ const apiLimiter = rateLimit({
   message: { success: false, message: "Too many requests. Please try again later." },
 });
 
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://portfolio-roan-three-88.vercel.app"
+  ],
+  credentials: true
+}));
+
 app.use("/api", apiLimiter);
 // contactLimiter is scoped to POST /api/contact inside routes/contact.js
 
